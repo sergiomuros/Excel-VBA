@@ -1,0 +1,45 @@
+Assigment 1:
+
+Option Explicit
+
+Function tank(R As Double, H As Double, d As Double) As Double
+'Place your code here
+If d <= R Then
+    tank = WorksheetFunction.Pi * d ^ 2 / 3 * (3 * R - d)
+ElseIf d < (H - R) Then
+    tank = 2 * WorksheetFunction.Pi * R ^ 3 / 3 _
+    + WorksheetFunction.Pi * R ^ 2 * (d - R)
+ElseIf d <= H Then
+    tank = 4 * WorksheetFunction.Pi * R ^ 3 / 3 _
+    + WorksheetFunction.Pi * R ^ 2 * (H - 2 * R) - _
+    WorksheetFunction.Pi * (H - d) ^ 2 / 3 * (3 * R - H + d)
+Else
+    tank = -1
+End If
+End Function
+
+
+Assigment 2:
+
+Option Explicit
+
+Function prime(n As Integer) As Boolean
+'Place your code here
+Dim l As Integer, flag As Boolean, i As Integer
+'Initializing
+l = WorksheetFunction.RoundDown(Sqr(n), 0)
+flag = True
+For i = 2 To l
+    If n Mod i = 0 Then flag = False
+Next i
+prime = flag
+End Function
+
+Function countprime(n1 As Integer, n2 As Integer) As Integer
+'Place your code here
+Dim i As Integer, count As Integer
+For i = n1 To n2
+    If prime(i) Then count = count + 1
+Next i
+countprime = count
+End Function
